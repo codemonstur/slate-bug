@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script id="page_one" type="text/html">
+        <div class="container">
+            <a href="/page-two" data-navigo="data-navigo">Page Two</a> | <a href="/page-one" data-navigo="data-navigo">Page One</a>
+        </div>
+    </script>
+    <script id="page_two" type="text/html">
+        <div class="container">
+            <a href="/page-one">Page One</a> | <a href="/page-two">Page two</a>
+        </div>
+    </script>
+    <script id="page_payment_start" type="text/html">
+        <div class="container">
+            <form id="payment-form">
+                <div id="payment-element"></div>
+                <button id="submit" type="button">
+                    <div id="spinner" class="spinner hidden"></div>
+                    <span id="button-text">Pay now</span>
+                </button>
+                <div id="payment-message" class="hidden"></div>
+            </form>
+        </div>
+    </script>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/navigo/8.11.1/navigo.min.js" integrity="sha384-iMcofI1vagkcmjRIvgjDF547fnAc4QY3QgV43SLM6KEnQqx9SRnP/P8w5fVgDVD+" crossorigin="anonymous"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>'use strict';$(document).ready(function(){(new Navigo("/")).on("/page-one",loadPageOne).on("/page-one",loadPageTwo).notFound(loadPageOne).resolve()});function loadPageOne(){$("body").html($("#page_one").html())}function loadPageTwo(){$("body").html($("#page_two").html())};</script>
+</body>
+</html>
